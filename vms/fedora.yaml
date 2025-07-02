@@ -62,6 +62,8 @@ spec:
           interfaces:
           - masquerade: {}
             name: default
+          - name: sriov-net
+            sriov: {}
           networkInterfaceMultiqueue: true
           rng: {}
         machine:
@@ -71,6 +73,9 @@ spec:
             memory: 2Gi
       evictionStrategy: LiveMigrate
       networks:
+      - name: sriov-net
+        multus:
+          networkName: test/sriov-test-network
       - name: default
         pod: {}
       terminationGracePeriodSeconds: 180
